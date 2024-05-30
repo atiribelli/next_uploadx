@@ -1,7 +1,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Locale, getDictionary } from './[lang]/dictionaries'
+import { options } from "./api/auth/[...nextauth]/options";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
 
-export default function Home() {
+type Props = {
+  params: {
+    lang: Locale
+  }
+}
+
+export default async function Home({ params: { lang } }: Props) {
+  const intl = await getDictionary(lang)
+  const session = await getServerSession(options);
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -89,6 +101,9 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
+
+        <Link className={styles.homelink} href={intl.home.linkuploader}>{intl.home.uploader}</Link>
+
       </div>
     </main>
   );

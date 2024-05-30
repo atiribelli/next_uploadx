@@ -1,0 +1,11 @@
+{
+    "home":{
+        "linkuploader": "en/uploader",
+        "uploader": "Map Uploader"
+    },
+    "uploader":{
+        "landing": "Maps List",
+        "nome": "File name",
+        "desccompleta": "Description"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "home":{
+        "linkuploader": "it/uploader",
+        "uploader": "Uploader Mappe"
+    },
+    "uploader":{
+        "landing": "Lista Mappe",
+        "nome": "Nome",
+        "desccompleta": "Descrizione Completa"
+    }
+}
