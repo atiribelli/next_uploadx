@@ -7,5 +7,8 @@
         "landing": "Maps List",
         "nome": "File name",
         "desccompleta": "Description"
+    },
+    "editor":{
+        "landing": "Map Editor"
     }
 }

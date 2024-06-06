@@ -7,5 +7,8 @@
         "landing": "Lista Mappe",
         "nome": "Nome",
         "desccompleta": "Descrizione Completa"
+    },
+    "editor":{
+        "landing": "Editor Mappe"
     }
 }

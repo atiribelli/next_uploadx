@@ -1,0 +1,42 @@
+/*
+@backgroundColor: #766565;
+@focusColor:  #FFDB81;
+@textColor: #617188;
+@fontSize: 10px;
+@fontFamily: sans-serif;
+
+@colorOrange: #ff6f00;
+@colorWhite: #fff;
+@colorDarkOrange: #FC9300;
+*/
+
+
+.LeftBar {
+  position: relative;
+  top: 0px;
+  right: 0;
+  padding-top: 50px;
+  border-color: #808080;
+  border-style: solid;
+  border-width: 0px;
+  border: none;
+  /*overflow-x:hidden;*/
+  background-color: #766565;
+  overflow-y:visible;
+  width: 42px;
+  z-index: 1;
+}
+
+.LeftBar button {
+  border: 0px;
+  margin: 1px;
+  padding: 2px;
+  border-radius: 5px;
+  font-size: 0.5em;
+  width: 40px;
+  height: 30px;
+  background-color: #766565;
+  &:hover, &.selected {
+    background-color: #FFDB81;
+  }
+}

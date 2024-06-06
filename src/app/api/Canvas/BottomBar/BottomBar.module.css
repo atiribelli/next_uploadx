@@ -1,0 +1,40 @@
+
+
+.BottomBar {
+  position: fixed;
+  display: flex;
+  border-right: none;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 35px;
+  padding-left: 50px;
+  z-index: 1;
+  background-color: #766565;
+  font-size: 0.5em;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.BottomBar .OIeMode {
+  display: inline;
+}
+
+.BottomBar select {
+  font-size: 1em;
+}
+
+.BottomBar .OIeContext {
+  display: inline;
+}
+
+.BottomBar .OIeLayer {
+  display: inline;
+}
+
+.BottomBar .OIeZoom {
+  position: relative;
+  width: 16px;
+  left: -1px;
+  top: 5px;
+}

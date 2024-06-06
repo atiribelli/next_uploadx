@@ -1,0 +1,41 @@
+@import '../variables.css';
+
+.TopBar {
+  position: relative;
+  border-right: none;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 35px;
+  padding-left: 50px;
+  z-index: 1;
+  background-color: var(--backgroundColor);
+}
+
+.TopBar .CanvasMode {
+  position: absolute;
+  top: 0px;
+  left: 225px;
+}
+
+.TopBar .TagName {
+  position: absolute;
+  bottom: 0px;
+  left: 225px;
+}
+.TopBar button {
+  border: 0px;
+  margin: 1px;
+  padding: 2px;
+  border-radius: 5px;
+  font-size: 0.5em;
+  width: 30px;
+  height: 30px;
+  background-color: var(--backgroundColor);
+  &:hover {
+    background-color: var(--focusColor);
+  }
+  &.disabled {
+    color: lightgrey;
+  }
+}

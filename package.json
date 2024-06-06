@@ -10,13 +10,20 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@svgedit/svgcanvas": "^7.2.2",
     "bcrypt": "^5.1.1",
+    "color-string": "^1.9.1",
     "mariadb": "^3.3.0",
     "negotiator": "^0.6.3",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",
+    "react-color": "^2.19.3",
     "react-dom": "^18",
+    "svgedit": "^7.3.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -27,6 +34,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "html-loader": "^5.0.0",
     "typescript": "^5"
   }
 }

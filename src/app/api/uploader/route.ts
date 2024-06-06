@@ -19,6 +19,5 @@ export async function GET(request: Request, { params }: { params: { dataini: str
  
   conn.release();
   conn.end();
-
   return NextResponse.json(rows, {status: 200});
 }

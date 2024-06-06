@@ -23,7 +23,7 @@ const useTable = (data, page, rowsPerPage) => {
 
     const slice = sliceData(data, page, rowsPerPage);
     setSlice([...slice]);
-  }, [data, setTableRange, page, setSlice, rowsPerPage]);
+  }, [data, setTableRange, page, setSlice]);
 
   return { slice, range: tableRange };
 };

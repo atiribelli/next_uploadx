@@ -1,3 +1,5 @@
+'use client'
+
 import { Mappa } from "@/app/lib/definitions";
 import { useEffect, useState } from "react";
 import styles from './uploader.module.css';
@@ -11,10 +13,16 @@ const Uploader = ({rowsPerPage, terms, user}) => {
         fetch(`/api/uploader/`)
         .then(response => response.json())
         .then(mappe => setMappe(mappe))
+        .then(mappe => console.log(mappe))
     },[]);
 
     const [page, setPage] = useState(1);
     const { slice, range } = useTable(mappe, page, rowsPerPage);
+
+    const handleOpenEditor = (map: Mappa) => {
+        //fetch map from item.nome 
+        //open editor passing map file
+    }
 
     return(
         <>
@@ -32,7 +40,7 @@ const Uploader = ({rowsPerPage, terms, user}) => {
                     </thead>
                     <tbody>
                         {slice.map((item: Mappa) => (
-                            <tr key={item.id}>
+                            <tr key={item.id} onClick={() => handleOpenEditor(item)}>
                                 <td>{item.nome}</td>
                                 <td>{item.desc_completa}</td>
                             </tr>
