@@ -34,7 +34,7 @@ const reducer = (state, action) => {
       canvas.setTextContent(action.text)
       return state
     case 'updated':
-      newMode = (canvas?.getMode() !== 'textedit') ? { mode: 'select' } : {}
+      newMode = canvas?.getMode() === 'textedit' ? {} : { mode: 'select' }
       return { ...state, updated: action.updated }
     default:
       throw new Error(`unknown action type: ${action.type}`)

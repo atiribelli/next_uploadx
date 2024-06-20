@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import IconButton from '../../IconButton/IconButton.jsx'
 
-const GroupTools = ({ canvas, selectedElement, multiselected }) => (
+const GroupTools = ({ canvas = null, selectedElement = null, multiselected }) => (
   <>
     {multiselected && (
       <IconButton
@@ -29,6 +29,6 @@ GroupTools.propTypes = {
   selectedElement: PropTypes.object,
   multiselected: PropTypes.bool.isRequired,
 }
-GroupTools.defaultProps = { canvas: null, selectedElement: null }
+//GroupTools.defaultProps = { canvas: null, selectedElement: null }
 
 export default GroupTools

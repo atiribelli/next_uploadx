@@ -11,7 +11,7 @@ if (!global.pool){
 
 localPool = global.pool;
 
-export async function GET(request: Request, { params }: { params: { dataini: string } }) {
+export async function GET(request: Request) {
   const conn = await localPool.getConnection();
   const query = `SELECT * FROM mappe_tgrx`;
   console.debug(query);

@@ -8,7 +8,7 @@ import { SketchPicker } from 'react-color'
 import Icon from '../Icon/Icon.jsx'
 import styles from './ColorButton.module.css'
 
-const ColorButton = ({ onChange, value, title }) => {
+const ColorButton = ({ onChange, value = '', title = '' }) => {
   const [display, setDisplay] = React.useState(false)
   const handleClick = () => setDisplay(!display)
   const onChangeComplete = (color) => {
@@ -19,9 +19,9 @@ const ColorButton = ({ onChange, value, title }) => {
   const rgb = colorString.get.rgb(value) || [255, 255, 255] // or white
   return (
     <div>
-      {display && rgb && (
+      {display /*&& rgb*/ && (
         <SketchPicker
-          className="OIe-tools-color-panel"
+          className={styles.OIeToolsColorPanel} 
           color={colorString.to.hex(rgb)}
           onChangeComplete={onChangeComplete}
         />
@@ -43,6 +43,6 @@ ColorButton.propTypes = {
   title: PropTypes.string,
 }
 
-ColorButton.defaultProps = { value: '', title: '' }
+//ColorButton.defaultProps = { value: '', title: '' }
 
 export default ColorButton

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import IconButton from '../../IconButton/IconButton.jsx'
 
-const GenericTools = ({ canvas, canvasUpdated, svgUpdate, onClose }) => {
+const GenericTools = ({ canvas = null, canvasUpdated, svgUpdate, svgExport, onClose }) => {
   const onClickUndo = () => {
     canvas.undoMgr.undo()
     // populateLayers()
@@ -13,10 +13,7 @@ const GenericTools = ({ canvas, canvasUpdated, svgUpdate, onClose }) => {
     // populateLayers()
   }
   const onClickClose = () => {
-    if (canvasUpdated) {
-      // eslint-disable-next-line no-alert
-      if (!window.confirm('A change was not saved, do you really want to exit?')) return
-    }
+    if (canvasUpdated && !window.confirm('A change was not saved, do you really want to exit?')) return
     onClose()
   }
   return (
@@ -32,6 +29,13 @@ const GenericTools = ({ canvas, canvasUpdated, svgUpdate, onClose }) => {
           svgUpdate(canvas.getSvgString())
         }}
       />
+      <IconButton
+        icon="Download"
+        className={canvasUpdated ? 'enabled' : 'disabled'}
+        onClick={() => {
+          svgExport(canvas.getSvgString())
+        }}
+      />
       <IconButton icon="Undo" onClick={onClickUndo} />
       <IconButton icon="Redo" onClick={onClickRedo} />
     </>
@@ -41,9 +45,10 @@ const GenericTools = ({ canvas, canvasUpdated, svgUpdate, onClose }) => {
 GenericTools.propTypes = {
   canvas: PropTypes.object,
   svgUpdate: PropTypes.func.isRequired,
+  svgExport: PropTypes.func.isRequired,
   canvasUpdated: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 }
-GenericTools.defaultProps = { canvas: null }
+//GenericTools.defaultProps = { canvas: null }
 
 export default GenericTools

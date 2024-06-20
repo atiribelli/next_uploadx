@@ -5,23 +5,23 @@ import { useEffect, useState } from "react";
 import styles from './uploader.module.css';
 import useTable from '@/app/hooks/useTable';
 import TableFooter from '@/app/api/TableFooter';
+import { useRouter} from 'next/navigation'
 
-const Uploader = ({rowsPerPage, terms, user}) => {
+const Uploader = ({rowsPerPage, terms, user, mapsFolder}) => {
     const [mappe, setMappe] = useState<Mappa[]>([]);
+    const router = useRouter();
 
     useEffect(() => {
-        fetch(`/api/uploader/`)
+        fetch(`/api/uploader/list/`)
         .then(response => response.json())
         .then(mappe => setMappe(mappe))
-        .then(mappe => console.log(mappe))
     },[]);
 
     const [page, setPage] = useState(1);
     const { slice, range } = useTable(mappe, page, rowsPerPage);
 
     const handleOpenEditor = (map: Mappa) => {
-        //fetch map from item.nome 
-        //open editor passing map file
+        router.push(`./editor/${map.nome}`);
     }
 
     return(

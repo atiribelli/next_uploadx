@@ -7,10 +7,11 @@ import TopBar from './TopBar/TopBar.jsx'
 import LeftBar from './LeftBar/LeftBar.jsx'
 import BottomBar from './BottomBar/BottomBar.jsx'
 import updateCanvas from './editor/updateCanvas'
+import styles from './Canvas.module.css'
 
 import { canvasContext, CanvasContextProvider } from './Context/canvasContext.jsx'
 
-const Canvas = ({ svgContent, locale, svgUpdate, onClose, log }) => {
+const Canvas = ({ svgContent = '<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg"></svg>', locale, svgUpdate, svgExport, onClose, log }) => {
   const textRef = React.useRef(null)
   const svgcanvasRef = React.useRef(null)
   const oiAttributes = React.useRef(svg.saveOIAttr(svgContent))
@@ -58,6 +59,12 @@ const Canvas = ({ svgContent, locale, svgUpdate, onClose, log }) => {
     dispatchCanvasState({ type: 'updated', updated: false })
   }
 
+  const svgExportHandler = (svgString) => {
+    svgExport(svg.restoreOIAttr(svgString, oiAttributes.current))
+    console.log(canvasState)
+    dispatchCanvasState({ type: 'updated', updated: false })
+  }
+
   const onKeyUp = (event) => {
     dispatchCanvasState({ type: 'setTextContent', text: event.target.value })
   }
@@ -68,6 +75,7 @@ const Canvas = ({ svgContent, locale, svgUpdate, onClose, log }) => {
       dispatchCanvasState({ type: 'deleteSelectedElements' })
     }
   }
+
   // unused events -> we just log them in debug mode.
   const eventList = {
     selected: selectedHandler,
@@ -98,12 +106,13 @@ const Canvas = ({ svgContent, locale, svgUpdate, onClose, log }) => {
       canvas.bind(eventName, eventHandler)
     })
     dispatchCanvasState({ type: 'init', canvas, svgcanvas: editorDom, config })
-    document.addEventListener('keydown', onKeyDown.bind(canvas))
+    document.addEventListener('keydown', onKeyDown, canvas)
     return () => {
       // cleanup function
       console.log('cleanup')
-      document.removeEventListener('keydown', onKeyDown.bind(canvas))
+      document.removeEventListener('keydown', onKeyDown, canvas)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   React.useLayoutEffect(() => {
@@ -115,6 +124,7 @@ const Canvas = ({ svgContent, locale, svgUpdate, onClose, log }) => {
     updateCanvas(canvasState.canvas, svgcanvasRef.current, config, true)
     if (!success) throw new Error('Error loading SVG')
     dispatchCanvasState({ type: 'updated', updated: false })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [svgContent, canvasState.canvas])
 
   updateContextPanel()
@@ -122,14 +132,15 @@ const Canvas = ({ svgContent, locale, svgUpdate, onClose, log }) => {
     <>
       <TopBar
         svgUpdate={svgUpdateHandler}
+        svgExport={svgExportHandler}
         onClose={onClose}
       />
       <LeftBar />
       <BottomBar />
 
-      <div className="OIe-editor" role="main">
-        <div className="workarea">
-          <div ref={svgcanvasRef} className="svgcanvas" style={{ position: 'relative' }} />
+      <div className={styles.OieEditor} role="main">
+        <div className={styles.workarea}>
+          <div ref={svgcanvasRef} className={styles.svgcanvas} style={{ position: 'relative' }} />
         </div>
       </div>
       {/* below input is intentionnally kept off the visible window and is used for text edition */}
@@ -142,11 +153,12 @@ Canvas.propTypes = {
   svgContent: PropTypes.string,
   locale: PropTypes.string.isRequired,
   svgUpdate: PropTypes.func.isRequired,
+  svgExport: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   log: PropTypes.func.isRequired,
 }
 
-Canvas.defaultProps = { svgContent: '<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg"></svg>' }
+//Canvas.defaultProps = { svgContent: '<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg"></svg>' }
 
 const CanvasWithContext = (props) => (<CanvasContextProvider><Canvas {...props} /></CanvasContextProvider>)
 export default CanvasWithContext

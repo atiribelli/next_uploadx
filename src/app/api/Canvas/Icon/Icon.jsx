@@ -27,6 +27,8 @@ const Icon = ({ name, ...otherProps }) => {
       return <Image width={12} height={12} src='/images/rect.svg' alt="rect" {...otherProps} />
     case 'Close':
       return <Image width={12} height={12} src='/images/close.svg' alt="close" {...otherProps} />
+    case 'Download':
+      return <Image width={12} height={12} src='/images/save.svg' alt="save" {...otherProps} />
     case 'Save':
       return <Image width={12} height={12} src='/images/save.svg' alt="save" {...otherProps} />
     case 'Undo':
@@ -34,27 +36,27 @@ const Icon = ({ name, ...otherProps }) => {
     case 'Redo':
       return <Image width={12} height={12} src='/images/redo.svg' alt="redo" {...otherProps} />
     case 'Group':
-      return <Image width={12} height={12} src='/images/group.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/group_elements.svg' alt="group" {...otherProps} />
     case 'Ungroup':
       return <Image width={12} height={12} src='/images/ungroup.svg' alt="group" {...otherProps} />
     case 'AlignBottom':
-      return <Image width={12} height={12} src='/images/alignBottom.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/align_bottom.svg' alt="group" {...otherProps} />
     case 'AlignCenter':
-      return <Image width={12} height={12} src='/images/alignCenter.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/align_center.svg' alt="group" {...otherProps} />
     case 'AlignTop':
-      return <Image width={12} height={12} src='/images/alignTop.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/align_top.svg' alt="group" {...otherProps} />
     case 'AlignLeft':
-      return <Image width={12} height={12} src='/images/alignLeft.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/align_left.svg' alt="group" {...otherProps} />
     case 'AlignRight':
-      return <Image width={12} height={12} src='/images/alignRight.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/align_right.svg' alt="group" {...otherProps} />
     case 'AlignMiddle':
-      return <Image width={12} height={12} src='/images/alignMiddle.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/align_middle.svg' alt="group" {...otherProps} />
     case 'Align':
       return <Image width={12} height={12} src='/images/align.svg' alt="group" {...otherProps} />
     case 'MoveBottom':
-      return <Image width={12} height={12} src='/images/moveBottom.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/move_bottom.svg' alt="group" {...otherProps} />
     case 'MoveTop':
-      return <Image width={12} height={12} src='/images/moveTop.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/move_top.svg' alt="group" {...otherProps} />
     case 'Bold':
       return <Image width={12} height={12} src='/images/bold.svg' alt="group" {...otherProps} />
     case 'Italic':
@@ -64,13 +66,13 @@ const Icon = ({ name, ...otherProps }) => {
     case 'Stroke':
       return <Image width={12} height={12} src='/images/stroke.svg' alt="group" {...otherProps} />
     case 'FontSize':
-      return <Image width={12} height={12} src='/images/fontSize.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/fontsize.svg' alt="group" {...otherProps} />
     case 'NoColor':
-      return <Image width={12} height={12} src='/images/noColor.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/no_color.svg' alt="group" {...otherProps} />
     case 'Zoom':
       return <Image width={12} height={12} src='/images/zoom.svg' alt="group" {...otherProps} />
     default:
-      return <Image width={12} height={12} src='/images/group.svg' alt="group" {...otherProps} />
+      return <Image width={12} height={12} src='/images/group_elements.svg' alt="group" {...otherProps} />
   }
 }
 

@@ -17,12 +17,13 @@ class Editor {
    */
   constructor(div) {
     /** @private the div that holds the whole thing */
-    this.div = div
+    this.div = div;
     this.root = createRoot(this.div);
     this.config = {
       debug: true,
-      i18n: 'fr',
+      i18n: 'it',
       saveHandler: null,
+      exportHandler: null,
       onCloseHandler: null,
       debugPrefix: 'editor',
     }
@@ -38,6 +39,17 @@ class Editor {
       this.config.saveHandler(this.svgContent)
     }
   }
+
+    /**
+   * Manage SVG export
+   */
+    svgExport = (svgContent) => {
+      this.logDebugData('svgExport', this.config.exportHandler !== null)
+      this.svgContent = svgContent
+      if (this.config.exportHandler !== null) {
+        this.config.exportHandler(this.svgContent)
+      }
+    }
 
   /**
    * Manage Close
@@ -76,6 +88,7 @@ class Editor {
             svgContent,
             locale: this.config.i18n,
             svgUpdate: this.svgUpdate,
+            svgExport: this.svgExport,
             onClose: this.onClose,
             log: this.logDebugData,
           },

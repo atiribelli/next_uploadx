@@ -15,7 +15,7 @@ export default async function Page({ params: { lang } }) {
   return (
       <>
         <h1>{dict.uploader.landing}</h1>
-        <Uploader rowsPerPage={25} terms={dict.uploader} user={session?.user?.name}/>
+        <Uploader rowsPerPage={25} terms={dict.uploader} user={session?.user?.name} mapsFolder={process.env.MAPS_FOLDER}/>
       </>
   );
 }

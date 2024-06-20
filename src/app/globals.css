@@ -115,3 +115,19 @@ a {
     color-scheme: dark;
   }
 }
+
+  
+#svgroot {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#canvasBackground > rect {
+  fill: #fff !important;
+}
+
+  
+*:focus {
+  outline: none;
+}

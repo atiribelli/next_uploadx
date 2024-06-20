@@ -7,7 +7,7 @@ import Icon from '../Icon/Icon.jsx'
 
 import { canvasContext } from '../Context/canvasContext.jsx'
 
-const zoomOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+const zoomOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 400, 1000]
 
 const BottomBar = () => {
   const [canvasState, canvasStateDispatcher] = React.useContext(canvasContext)

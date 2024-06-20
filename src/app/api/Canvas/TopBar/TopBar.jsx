@@ -15,12 +15,11 @@ import { canvasContext } from '../Context/canvasContext.jsx'
 
 import styles from './TopBar.module.css'
 
-const TopBar = ({ svgUpdate, onClose }) => {
+const TopBar = ({ svgUpdate, svgExport, onClose }) => {
   const [canvasState] = React.useContext(canvasContext)
   const { canvas, selectedElement, mode, updated } = canvasState
   console.info(mode, selectedElement?.tagName)
   const handleChange = (type, newVal) => {
-    const elem = selectedElement
     switch (type) {
       case 'font-family':
         canvasState.canvas.setFontFamily(newVal)
@@ -32,8 +31,8 @@ const TopBar = ({ svgUpdate, onClose }) => {
         // if the user is changing the id, then de-select the element first
         // change the ID, then re-select it with the new ID
         canvasState.canvas.clearSelection()
-        elem.id = newVal
-        canvasState.canvas.addToSelection([elem], true)
+        selectedElement.id = newVal
+        canvasState.canvas.addToSelection([selectedElement], true)
         break
       default:
         console.error(`type (${type}) not supported`)
@@ -49,6 +48,7 @@ const TopBar = ({ svgUpdate, onClose }) => {
           canvasUpdated={updated}
           selectedElement={selectedElement}
           svgUpdate={svgUpdate}
+          svgExport={svgExport}
           onClose={onClose}
         />
       )
@@ -61,6 +61,7 @@ const TopBar = ({ svgUpdate, onClose }) => {
           canvasUpdated={updated}
           selectedElement={selectedElement}
           svgUpdate={svgUpdate}
+          svgExport={svgExport}
           onClose={onClose}
         />
       )
@@ -73,6 +74,7 @@ const TopBar = ({ svgUpdate, onClose }) => {
           canvasUpdated={updated}
           selectedElement={selectedElement}
           svgUpdate={svgUpdate}
+          svgExport={svgExport}
           onClose={onClose}
         />
       )
@@ -94,6 +96,7 @@ const TopBar = ({ svgUpdate, onClose }) => {
           canvasUpdated={updated}
           selectedElement={selectedElement}
           svgUpdate={svgUpdate}
+          svgExport={svgExport}
           onClose={onClose}
         />
       )
@@ -117,6 +120,7 @@ const TopBar = ({ svgUpdate, onClose }) => {
         canvasUpdated={updated}
         selectedElement={selectedElement}
         svgUpdate={svgUpdate}
+        svgExport={svgExport}
         onClose={onClose}
       />
       <DelDupTools canvas={canvas} />
@@ -128,6 +132,7 @@ const TopBar = ({ svgUpdate, onClose }) => {
 
 TopBar.propTypes = {
   svgUpdate: PropTypes.func.isRequired,
+  svgExport: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 }
 

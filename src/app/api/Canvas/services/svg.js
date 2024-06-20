@@ -16,4 +16,5 @@ const restoreOIAttr = (svgContent, attributes) => {
     return svgContent.replace('<svg', `<svg ${oiNameSpace} ${attributes}`)
 }
   
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { saveOIAttr, restoreOIAttr }

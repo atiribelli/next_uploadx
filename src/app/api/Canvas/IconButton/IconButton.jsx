@@ -5,7 +5,7 @@ import React from 'react'
 import Icon from '../Icon/Icon.jsx'
 import styles from './IconButton.module.css'
 
-const IconButton = ({ onClick, className, icon }) => (
+const IconButton = ({ onClick, className = 'button', icon }) => (
   <button type="button" className={className} onClick={onClick}>
     <Icon name={icon} className={styles.OieToolsIcon} />
     <br />
@@ -19,6 +19,6 @@ IconButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
 }
-IconButton.defaultProps = { className: 'button' }
+//IconButton.defaultProps = { className: 'button' }
 
 export default IconButton

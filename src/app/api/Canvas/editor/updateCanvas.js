@@ -16,11 +16,7 @@ const updateCanvas = (svgCanvas, cnvs, curConfig, center, newCtr = {}) => {
     w = Math.max(wOrig, svgCanvas.contentW * zoom * multi)
     h = Math.max(hOrig, svgCanvas.contentH * zoom * multi)
   
-    if (w === wOrig && h === hOrig) {
-      workarea.style.overflow = 'hidden'
-    } else {
-      workarea.style.overflow = 'scroll'
-    }
+    workarea.style.overflow = w === wOrig && h === hOrig ? 'hidden' : 'scroll';
     // const oldCanY = cnvs.height() / 2;
     // const oldCanX = cnvs.width() / 2;
     // cnvs.width(w).height(h);
@@ -40,7 +36,10 @@ const updateCanvas = (svgCanvas, cnvs, curConfig, center, newCtr = {}) => {
     const scrollY = h / 2 - hOrig / 2
   
     //   if (!newCtr) {
-    if (!newCtr.x) {
+    if (newCtr.x) {
+      newCtr.x += offset.x
+      newCtr.y += offset.y
+    } else {
       const oldDistX = oldCtr.x - oldCanX
       const newX = newCanX + oldDistX * ratio
   
@@ -48,9 +47,6 @@ const updateCanvas = (svgCanvas, cnvs, curConfig, center, newCtr = {}) => {
       const newY = newCanY + oldDistY * ratio
       newCtr.x = newX
       newCtr.y = newY
-    } else {
-      newCtr.x += offset.x
-      newCtr.y += offset.y
     }
   
     if (center) {
